@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6b9eff;
+  --color-primary-hover: #548cff;
+  --color-primary-pressed: #3f7af0;
+  --color-soft: #eaf3ff;
+  --color-canvas: #f7faff;
+  --color-surface: #ffffff;
+  --color-ink: #243b5a;
+  --color-muted: #718096;
+  --color-line: #dce8f7;
+  --color-success: #2f7d57;
+  --color-danger: #b54747;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader", ui-serif, Georgia, serif;
+  --shadow-card: 0 8px 24px -16px rgb(36 59 90 / 0.18);
+  --radius-card: 1.25rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+::selection {
+  background: var(--color-soft);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.mic-listening {
+  animation: mic-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes mic-pulse {
+  50% {
+    opacity: 0.62;
+  }
+}
+
+/* Trainer room modal animation */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes zoom-in-95 {
+  from { transform: scale(0.95); }
+  to { transform: scale(1); }
+}
+.animate-in {
+  animation-duration: 150ms;
+  animation-fill-mode: both;
+}
+.fade-in {
+  animation-name: fade-in;
+}
+.zoom-in-95 {
+  animation-name: zoom-in-95;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mic-listening,
+  .animate-in {
+    animation: none;
+  }
+}
